@@ -1,0 +1,46 @@
+<head>
+  <title>myFridge</title>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="/jquery.ui.touch-punch.js"></script>
+</head>
+
+<body>
+  {{> layout}}
+</body>
+
+<template name="layout">
+  <div class="container">
+    <div class="left">
+      <h1>The Fridge</h1>
+      {{>fridge}}
+    </div>
+    <div class="right">
+      {{> productList}}
+    </div>
+  </div>
+</template>
+
+<template name="fridge">
+  <div id="fridge">
+    <img class="image-responsive" src="/empty-fridge.jpg" />
+    <ul>
+      {{#each product}}
+        <li>{{> productListItem}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="productList">
+  <div id="supermarket" class="box">
+    <ul id="products">
+    {{#each product}}
+      <li>{{> productListItem}}</li>
+    {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="productListItem">
+  <img src="{{img}}" data-id="{{_id}}" class="image-responsive product-image draggable" />
+</template>
