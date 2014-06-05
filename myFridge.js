@@ -37,17 +37,7 @@ if (Meteor.isClient) {
   Template.productListItem.rendered = function(){
     $(this.find('.draggable')).draggable({
       cursor: 'move',
-      helper: 'clone',
-      start: function(){
-        var query = { _id: $(this).data('id') };
-        var data = { $set: { isDragging: true }};
-        Product.update( query, data );
-      },
-      stop: function(){
-        var query = { _id: $(this).data('id') };
-        var data = { $set: { isDragging: false }};
-        Product.update(query, data);
-      }
+      helper: 'clone'
     });
   }
 
@@ -69,29 +59,25 @@ if (Meteor.isServer) {
     Product.insert({
       name: 'Banana',
       img: '/banana.png',
-      place: 'supermarket',
-      isDragging: false
+      place: 'supermarket'
     });
 
     Product.insert({
       name: 'Milk',
       img: '/milk.png',
-      place: 'supermarket',
-      isDragging: false
+      place: 'supermarket'
     });
 
     Product.insert({
       name: 'Bread',
       img: '/bread.png',
-      place: 'supermarket',
-      isDragging: false
+      place: 'supermarket'
     });
 
     Product.insert({
       name: 'Juice',
       img: '/juice.png',
-      place: 'supermarket',
-      isDragging: false
+      place: 'supermarket'
     });
   });
 }
